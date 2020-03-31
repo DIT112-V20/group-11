@@ -24,6 +24,10 @@ The product can be served as personal use or commercial use. For personal use, t
 Also, if we have enough time we may implement more functionalities in the future.
 
 ### <a id="1.2"></a>Why will we make it?
+
+We are doing this product in order to assist persons with the luggage trnaspotantion so they can avoid injuries by carrying out heavy weight and given them more 
+freedom to handdle other tasks like taking care of themselves, their families or others. 
+
 ### What problem does it solve?
 People from all walks of life travel each and every single day. As an evolving society, we decided to come up with this idea so as to benefit travelers who might have too much on their hands or simply just for the luxury of it. Moreover, this product will mostly be reliable for handicapped people.
 
