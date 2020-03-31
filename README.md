@@ -50,6 +50,7 @@ More hardware may be added in the future...
 What kind of technology are we going to use?
 
 Software:
+
 **Arduino IDE:** develop and test the application that would run on the hardware.
 
 **Android Studio or Vue-based webpage:** develop and test user interface to control the hardware.
