@@ -1,4 +1,4 @@
-package com.example.androidapp
+package com.example.trailgage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
