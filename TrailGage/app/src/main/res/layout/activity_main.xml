@@ -7,6 +7,20 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/Connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0F4D7E"
+        android:text="@string/connect"
+        android:textColor="#F8F6F6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
+
+    <Button
         android:id="@+id/Speed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,18 +45,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.838" />
 
-    <Button
-        android:id="@+id/Connect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#0F4D7E"
-        android:text="@string/connect"
-        android:textColor="#F8F6F6"
+    <RelativeLayout
+        android:id="@+id/layout_joystick"
+        android:layout_width="287dp"
+        android:layout_height="271dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/joy_stick"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.465" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
