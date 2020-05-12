@@ -12,9 +12,6 @@ the field of view range larger than VL53L0X LiDAR
 ----------------------------------------- */
 
 #include <Smartcar.h> //https://platisd.github.io/smartcar_shield/index.html
-//WiFi setup
-#include <WiFi.h>;
-const char* ssid = "TrailGage";
 
 //pin setup
 const int TRIGGER_PIN = 18; //D18
@@ -40,17 +37,6 @@ SimpleCar car(control);
 void setup() {
     Serial.begin(9600); //start the system with thr baud rate of 9600
     car.setSpeed(START_SPEED);
-
-  Serial.begin(115200);
-  WiFi.begin(ssid);
-  Serial.print("Connecting to WiFi");
-
-  while (WiFi.status() != WL_CONNECTED){
-    Serial.print("."); // Prints . until it gets connected
-    delay(500);
-  } 
-  Serial.print("Connected to the WiFi network");
-    
 }
 
 //program function code
