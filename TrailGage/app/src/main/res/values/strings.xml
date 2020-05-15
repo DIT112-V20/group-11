@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Trail Gage</string>
+    <string name="app_name">TrailGage</string>
     <string name="speed">Speed</string>
     <string name="led_on_off">LED ON/OFF</string>
     <string name="connect">Connect</string>
