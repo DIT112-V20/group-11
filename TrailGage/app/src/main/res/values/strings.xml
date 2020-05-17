@@ -4,4 +4,5 @@
     <string name="led_on_off">LED ON/OFF</string>
     <string name="connect">Connect</string>
     <string name="connect_to_a_trailgage">Connect to a TrailGage</string>
+    <string name="Next">next</string>
 </resources>
