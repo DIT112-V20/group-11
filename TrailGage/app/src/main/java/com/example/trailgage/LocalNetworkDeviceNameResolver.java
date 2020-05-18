@@ -12,6 +12,7 @@ class DeviceNameNotResolvedException extends Exception {
     public DeviceNameNotResolvedException(String message) {
         super(message);
     }
+
 public static class LocalNetworkDeviceNameResolver {
     private final String mServiceName;
     private final String mServiceType;

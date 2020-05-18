@@ -3,10 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -28,6 +24,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -44,7 +45,7 @@ dependencies {
     // get request decencies
     // Recycler view
     //noinspection GradleCompatible
-    implementation "com.android.support:recyclerview-v7:X.0.0"
+    implementation "com.android.support:recyclerview-v7:29.0.0"
 
 // Card view
     //noinspection GradleCompatible
