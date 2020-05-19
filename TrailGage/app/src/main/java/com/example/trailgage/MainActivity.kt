@@ -69,9 +69,7 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
     private fun getConnectToServer(trailName: String) {
 
-        RetrofitClient
-            .instance
-            .getspeedorAngel(trailName)
+
 
     }
 

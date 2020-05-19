@@ -24,16 +24,6 @@ public class Control extends AppCompatActivity {
         setContentView(R.layout.activity_control);
 
 
-        JoystickView joystickLeft = findViewById(R.id.joystickView_left);
-        joystickLeft.setOnMoveListener(new JoystickView.OnMoveListener() {
-            @Override
-            public void onMove(int angle, int strength) {
-                mTextViewAngleLeft.setText(angle + "°");
-                mTextViewStrengthLeft.setText(strength + "%");
-            }
-        });
-
-
         mTextViewAngleRight = findViewById(R.id.textView_angle_right);
         mTextViewStrengthRight = findViewById(R.id.textView_strength_right);
         mTextViewCoordinateRight = findViewById(R.id.textView_coordinate_right);
@@ -43,8 +33,10 @@ public class Control extends AppCompatActivity {
             @SuppressLint("DefaultLocale")
             @Override
             public void onMove(int angle, int strength) {
-                mTextViewAngleRight.setText(angle + "°");
-                mTextViewStrengthRight.setText(strength + "%");
+                angle = setAngel(angle);
+
+                mTextViewAngleRight.setText(angle + "");
+                mTextViewStrengthRight.setText(strength + "");
                 mTextViewCoordinateRight.setText(
                         String.format("x%03d:y%03d",
                                 joystickRight.getNormalizedX(),
@@ -52,6 +44,35 @@ public class Control extends AppCompatActivity {
                 );
             }
         });
+    }
+
+    private int setAngel(int angle) {
+        int angel = 0;
+        if (angle >= 337.5 || angle < 22.5) {
+            //right angle
+            angel = 70;
+        } else if (angle >= 22.5 && angle < 67.5) {
+            //up-right angle
+            angel = 45;
+        } else if (angle >= 67.5 && angle < 112.5) {
+            //up angle
+            angel = 0;
+        } else if (angle >= 112.5 && angle < 157.5) {
+            // up-left angel
+            angel = -45;
+        } else if (angle >= 157.5 && angle < 202.5) {
+            //Left
+            angel = -70;
+        } else if (angle >= 202.5 && angle < 247.5) {
+            // reverse left
+            angel = -135;
+        } else if (angle >= 247.5 && angle < 292.5) {
+            //reverse
+            angel = 0;
+        } else if (angle >= 292.5 && angle < 337.5) {
+            angel=135;
+        }
+        return angel;
     }
 }
 
