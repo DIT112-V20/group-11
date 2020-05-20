@@ -6,6 +6,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.apptakk.http_request.HttpRequest;
+import com.apptakk.http_request.HttpRequestTask;
+import com.apptakk.http_request.HttpResponse;
+
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 public class Control extends AppCompatActivity {
@@ -16,6 +20,7 @@ public class Control extends AppCompatActivity {
     private TextView mTextViewAngleRight;
     private TextView mTextViewStrengthRight;
     private TextView mTextViewCoordinateRight;
+    private TextView mTextViewHttpResponse;
 
 
     @Override
@@ -27,6 +32,7 @@ public class Control extends AppCompatActivity {
         mTextViewAngleRight = findViewById(R.id.textView_angle_right);
         mTextViewStrengthRight = findViewById(R.id.textView_strength_right);
         mTextViewCoordinateRight = findViewById(R.id.textView_coordinate_right);
+        mTextViewHttpResponse = findViewById(R.id.textView_Http_response);
 
         final JoystickView joystickRight = findViewById(R.id.joystickView_right);
         joystickRight.setOnMoveListener(new JoystickView.OnMoveListener() {
@@ -42,21 +48,46 @@ public class Control extends AppCompatActivity {
                                 joystickRight.getNormalizedX(),
                                 joystickRight.getNormalizedY())
                 );
+
+                new HttpRequestTask(
+
+                        new HttpRequest(url(strength), HttpRequest.POST),
+                        new HttpRequest.Handler() {
+                            @Override
+                            public void response(HttpResponse response) {
+                                if (response.code == 200) {
+                                    mTextViewHttpResponse.setText(response.body);
+                                }else{
+                                    System.out.println(response.body);
+                                    //mTextViewHttpResponse.setText(response.body)
+                                }
+                            }
+                        }).execute();
+
             }
+
+
         });
     }
 
+    public String url(int strength) {
+        System.out.println("192.168.1.104/drive?speed="+String.valueOf(strength));
+        return "http://192.168.1.105/drive?speed="+String.valueOf(strength);
+    }
+
+    // this method to correct the app angel to fit the sketch angel.
+
     private int setAngel(int angle) {
-        int angel = 0;
-        if (angle >= 337.5 || angle < 22.5) {
-            //right angle
-            angel = 70;
+        int angel = -70;
+        if (angle >= 67.5 && angle < 112.5) {
+            //up angle
+            angel = 0;
         } else if (angle >= 22.5 && angle < 67.5) {
             //up-right angle
             angel = 45;
-        } else if (angle >= 67.5 && angle < 112.5) {
-            //up angle
-            angel = 0;
+        } else if (angle >= 337.5 || angle < 22.5) {
+            //right angle
+            angel = 70;
         } else if (angle >= 112.5 && angle < 157.5) {
             // up-left angel
             angel = -45;

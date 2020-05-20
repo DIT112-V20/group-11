@@ -46,6 +46,16 @@
         android:text="x050:x050"/>
 
 
+    <TextView
+        android:id="@+id/textView_Http_response"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_strength_right"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="19dp"
+        android:text="x050:x050" />
+
     <io.github.controlwear.virtual.joystick.android.JoystickView
         xmlns:custom="http://schemas.android.com/apk/res-auto"
         android:id="@+id/joystickView_right"
