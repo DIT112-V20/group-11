@@ -39,6 +39,7 @@ public class Control extends AppCompatActivity {
             @SuppressLint("DefaultLocale")
             @Override
             public void onMove(int angle, int strength) {
+                strength = setStrength(strength,angle);
                 angle = setAngel(angle);
 
                 mTextViewAngleRight.setText(angle + "");
@@ -51,7 +52,7 @@ public class Control extends AppCompatActivity {
 
                 new HttpRequestTask(
 
-                        new HttpRequest(url(strength), HttpRequest.POST),
+                        new HttpRequest(url(strength,angle), HttpRequest.POST),
                         new HttpRequest.Handler() {
                             @Override
                             public void response(HttpResponse response) {
@@ -59,7 +60,7 @@ public class Control extends AppCompatActivity {
                                     mTextViewHttpResponse.setText(response.body);
                                 }else{
                                     System.out.println(response.body);
-                                    //mTextViewHttpResponse.setText(response.body)
+                                    //mTextViewHttpResponse.setText(response.body);
                                 }
                             }
                         }).execute();
@@ -70,15 +71,26 @@ public class Control extends AppCompatActivity {
         });
     }
 
-    public String url(int strength) {
-        System.out.println("192.168.1.104/drive?speed="+String.valueOf(strength));
-        return "http://192.168.1.105/drive?speed="+String.valueOf(strength);
+
+
+    private int setStrength(int strength,int angle) {
+        int revStrength = strength;
+        if (angle >= 247.5 && angle < 292.5) {
+            //reverse
+            revStrength= -1*strength;
+            ;}
+        return revStrength;
+    }
+
+    public String url(int strength,int angle) {
+        System.out.println("http://192.168.1.105/drive?speed="+String.valueOf(strength)+"&angle="+String.valueOf(angle));
+        return "http://192.168.1.105/drive?speed="+String.valueOf(strength)+"&angle="+String.valueOf(angle);
     }
 
     // this method to correct the app angel to fit the sketch angel.
 
     private int setAngel(int angle) {
-        int angel = -70;
+        int angel = 0;
         if (angle >= 67.5 && angle < 112.5) {
             //up angle
             angel = 0;

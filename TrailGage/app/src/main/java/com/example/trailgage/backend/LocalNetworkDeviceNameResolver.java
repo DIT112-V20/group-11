@@ -1,4 +1,4 @@
-package com.example.trailgage;
+package com.example.trailgage.backend;
 
 import android.content.Context;
 import android.net.nsd.NsdManager;
