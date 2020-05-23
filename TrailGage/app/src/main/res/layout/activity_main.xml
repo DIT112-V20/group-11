@@ -20,28 +20,29 @@
         android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355"
-        tools:layout_editor_absoluteX="24dp" />
+        app:layout_constraintVertical_bias="0.151"
+        tools:layout_editor_absoluteX="20dp" />
 
+    //This is for the connect to a trailGage button
     <Button
         android:id="@+id/containedButton"
         style="@style/TextAppearance.AppCompat.Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#0087D1"
-        android:fontFamily="@font/light"
+        android:background="@drawable/custombutton"
+        android:fontFamily="@font/poppinslight"
         android:padding="15dp"
         android:text="@string/connect_to_a_trailgage"
         android:textAllCaps="false"
         android:textColor="#c7def2"
         android:textSize="22sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintVertical_bias="0.299" />
 
     <Button
         android:id="@+id/Next"
