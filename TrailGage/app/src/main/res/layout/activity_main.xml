@@ -17,16 +17,17 @@
         android:textAllCaps="false"
         android:textSize="22sp"
         android:textColor="#c7def2"
-        android:fontFamily="@font/light"
+        android:fontFamily="@font/poppinslight"
         android:padding="15dp"
-        android:textStyle="bold|italic"
-        android:background="#0087D1"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintVertical_bias="0.271"
+        android:background="@drawable/custombutton"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
