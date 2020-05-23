@@ -1,4 +1,4 @@
-package com.example.trailgage.backend;
+package com.example.trailgage;
 
 import android.content.Context;
 import android.net.nsd.NsdManager;
@@ -12,8 +12,13 @@ class DeviceNameNotResolvedException extends Exception {
     public DeviceNameNotResolvedException(String message) {
         super(message);
     }
+}
 
-public static class LocalNetworkDeviceNameResolver {
+public class LocalNetworkDeviceNameResolver {
+    public String getAddress() {
+        return mAddress.toString();
+    }
+
     private final String mServiceName;
     private final String mServiceType;
     private final int mPort;
@@ -113,5 +118,4 @@ public static class LocalNetworkDeviceNameResolver {
     public interface AddressResolutionListener {
         void onAddressResolved(InetAddress address);
     }
-}
 }

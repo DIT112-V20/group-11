@@ -2,22 +2,23 @@ package com.example.trailgage
 
 import android.content.Context
 import android.content.Intent
+import android.net.nsd.NsdManager
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.getSystemService
-import com.example.trailgage.backend.RetrofitClient
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
-    private var editTextTrailname: EditText? = null
+    private var TAG: EditText? = null
     private var imm: InputMethodManager? = null
+    var mNsdManager: NsdManager? = null
+    var mDeviceNameResolver: LocalNetworkDeviceNameResolver? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +26,18 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
         setContentView(R.layout.activity_main)
 
         // initialize views
-        editTextTrailname = findViewById(R.id.editTextTrailname)
+        TAG = findViewById(R.id.editTextTrailname)
         imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
 
         // setting the listner to the search button
 
-        editTextTrailname?.setOnEditorActionListener(this)
+        TAG?.setOnEditorActionListener(this)
+
+
+
+
+
 
 
 
@@ -48,17 +55,17 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
     }
 
     override fun onEditorAction(p0: TextView?, actionId: Int, event: KeyEvent?): Boolean {
-        return if (p0 == editTextTrailname) {
-            val trailName = editTextTrailname?.text?.trim().toString()
+        return if (p0 == TAG) {
+            val trailName = TAG?.text?.trim().toString()
             if (trailName.isBlank() || trailName.isEmpty()) {
-                editTextTrailname?.error = getString(R.string.name_cannot_be_empty)
+                TAG?.error = getString(R.string.name_cannot_be_empty)
 
             } else {
 
-                imm?.hideSoftInputFromWindow(editTextTrailname?.windowToken,0)
+                imm?.hideSoftInputFromWindow(TAG?.windowToken, 0)
 
                 // connect the trail to server
-                getConnectToServer(trailName)
+
             }
             true
         } else {
@@ -67,9 +74,10 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
     }
 
-    private fun getConnectToServer(trailName: String) {
 
+    fun getTag(): String {
 
+        return this.TAG.toString()
 
     }
 

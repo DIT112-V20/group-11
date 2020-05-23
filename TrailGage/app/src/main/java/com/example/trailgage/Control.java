@@ -14,13 +14,12 @@ import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 public class Control extends AppCompatActivity {
 
-    private TextView mTextViewAngleLeft;
-    private TextView mTextViewStrengthLeft;
-
     private TextView mTextViewAngleRight;
     private TextView mTextViewStrengthRight;
     private TextView mTextViewCoordinateRight;
     private TextView mTextViewHttpResponse;
+    private String ipAddress;
+    private Object MainActivity;
 
 
     @Override
@@ -33,6 +32,8 @@ public class Control extends AppCompatActivity {
         mTextViewStrengthRight = findViewById(R.id.textView_strength_right);
         mTextViewCoordinateRight = findViewById(R.id.textView_coordinate_right);
         mTextViewHttpResponse = findViewById(R.id.textView_Http_response);
+        MainActivity = new MainActivity();
+        ipAddress = ((com.example.trailgage.MainActivity) MainActivity).getTag();
 
         final JoystickView joystickRight = findViewById(R.id.joystickView_right);
         joystickRight.setOnMoveListener(new JoystickView.OnMoveListener() {
