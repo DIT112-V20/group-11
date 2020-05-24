@@ -1,5 +1,5 @@
 package com.example.trailgage;
-
+// https://github.com/DIT112-V20/kotlin-app-arduino-sketch-ci/tree/master/android/LocalDeviceNameResolution
 import android.content.Context;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
