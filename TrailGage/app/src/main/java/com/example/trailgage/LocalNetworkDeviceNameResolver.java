@@ -1,4 +1,4 @@
-package com.example.trailgage.backend;
+package com.example.trailgage;
 
 import android.content.Context;
 import android.net.nsd.NsdManager;
@@ -12,8 +12,9 @@ class DeviceNameNotResolvedException extends Exception {
     public DeviceNameNotResolvedException(String message) {
         super(message);
     }
+}
 
-public static class LocalNetworkDeviceNameResolver {
+public class LocalNetworkDeviceNameResolver {
     private final String mServiceName;
     private final String mServiceType;
     private final int mPort;
@@ -30,13 +31,13 @@ public static class LocalNetworkDeviceNameResolver {
      * asynchronous way by passing a callback through the constructor.
      *
      * @param context     The application context
-     * @param serviceName The service name to discover without (.local) suffixes
+     * @param trailgage The service name to discover without (.local) suffixes
      * @param serviceType The service type (e.g. _http._tcp.)
      * @param port        The port
      */
-    LocalNetworkDeviceNameResolver(Context context, String serviceName, String serviceType,
+    LocalNetworkDeviceNameResolver(Context context, String trailgage, String serviceType,
                                    int port) {
-        this(context, serviceName, serviceType, port, null);
+        this(context, trailgage, serviceType, port, null);
     }
 
     /**
@@ -113,5 +114,4 @@ public static class LocalNetworkDeviceNameResolver {
     public interface AddressResolutionListener {
         void onAddressResolved(InetAddress address);
     }
-}
 }

@@ -1,5 +1,6 @@
-package com.example.trailgage.backend
+package com.example.trailgage
 
+import com.example.trailgage.backend.Endpoint
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
