@@ -41,9 +41,20 @@ void setup() {
 
 //program function code
 void loop() {
+    
     dataPrint();
     obstacleAvoid();
+   
 }
+int getDistance()
+{
+  int d =  front.SR04_cm();
+  if(d == 0)
+  {
+    return MAX_DISTANCE;
+  }else{
+    return d;
+  }
 
 //print the distance data on serial monitor every 0.2s
 void dataPrint() {
