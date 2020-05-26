@@ -1,6 +1,7 @@
 package com.example.trailgage;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -18,8 +19,8 @@ public class Control extends AppCompatActivity {
     private TextView mTextViewStrengthRight;
     private TextView mTextViewCoordinateRight;
     private TextView mTextViewHttpResponse;
-    private String ipAddress;
-    private Object MainActivity;
+    private TextView textViewIpAdd;
+
 
 
     @Override
@@ -32,15 +33,18 @@ public class Control extends AppCompatActivity {
         mTextViewStrengthRight = findViewById(R.id.textView_strength_right);
         mTextViewCoordinateRight = findViewById(R.id.textView_coordinate_right);
         mTextViewHttpResponse = findViewById(R.id.textView_Http_response);
-        MainActivity = new MainActivity();
-        ipAddress = ((com.example.trailgage.MainActivity) MainActivity).getTag();
+        String ip = getIntent().getStringExtra("ipAdd");
+        //ip = "/192.168.1.105";
+        textViewIpAdd = findViewById(R.id.textView_Ip_Add);
+        textViewIpAdd.setText(ip);
 
         final JoystickView joystickRight = findViewById(R.id.joystickView_right);
+        String finalIp = ip;
         joystickRight.setOnMoveListener(new JoystickView.OnMoveListener() {
             @SuppressLint("DefaultLocale")
             @Override
             public void onMove(int angle, int strength) {
-                strength = setStrength(strength,angle);
+                strength = setStrength(strength, angle);
                 angle = setAngel(angle);
 
                 mTextViewAngleRight.setText(angle + "");
@@ -53,13 +57,13 @@ public class Control extends AppCompatActivity {
 
                 new HttpRequestTask(
 
-                        new HttpRequest(url(strength,angle), HttpRequest.POST),
+                        new HttpRequest(url(strength, angle, finalIp), HttpRequest.POST),
                         new HttpRequest.Handler() {
                             @Override
                             public void response(HttpResponse response) {
                                 if (response.code == 200) {
                                     mTextViewHttpResponse.setText(response.body);
-                                }else{
+                                } else {
                                     System.out.println(response.body);
                                     //mTextViewHttpResponse.setText(response.body);
                                 }
@@ -73,19 +77,21 @@ public class Control extends AppCompatActivity {
     }
 
 
-
-    private int setStrength(int strength,int angle) {
+    private int setStrength(int strength, int angle) {
         int revStrength = strength;
         if (angle >= 247.5 && angle < 292.5) {
             //reverse
-            revStrength= -1*strength;
-            ;}
+            revStrength = -1 * strength;
+            ;
+        }
         return revStrength;
     }
 
-    public String url(int strength,int angle) {
-        System.out.println("http://192.168.1.105/drive?speed="+String.valueOf(strength)+"&angle="+String.valueOf(angle));
-        return "http://192.168.1.105/drive?speed="+String.valueOf(strength)+"&angle="+String.valueOf(angle);
+    public String url(int strength, int angle, String ip) {
+        String ipAdd = ip;
+        //System.out.println("http://192.168.1.105/drive?speed="+String.valueOf(strength)+"&angle="+String.valueOf(angle));
+        System.out.println("http:/" + ip + "/drive?speed=" + String.valueOf(strength) + "&angle=" + String.valueOf(angle));
+        return "http://192.168.1.105/drive?speed=" + String.valueOf(strength) + "&angle=" + String.valueOf(angle);
     }
 
     // this method to correct the app angel to fit the sketch angel.
@@ -114,7 +120,7 @@ public class Control extends AppCompatActivity {
             //reverse
             angel = 0;
         } else if (angle >= 292.5 && angle < 337.5) {
-            angel=135;
+            angel = 135;
         }
         return angel;
     }

@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="0°"/>
+        android:text="0°" />
 
 
     <TextView
@@ -54,7 +54,17 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="50dp"
         android:layout_marginRight="19dp"
-        android:text="x050:x050" />
+        android:text="server res" />
+
+    <TextView
+        android:id="@+id/textView_Ip_Add"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_strength_right"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="54dp"
+        android:layout_marginRight="201dp"
+        android:text="Ip address" />
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
         xmlns:custom="http://schemas.android.com/apk/res-auto"

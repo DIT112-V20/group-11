@@ -26,6 +26,7 @@ public class LocalNetworkDeviceNameResolver {
     private InetAddress mAddress;
     private CountDownLatch mLatch;
     private AddressResolutionListener mAddressResolutionListener;
+    public static String ipAddress;
 
     /**
      * Constructs a new class instance meant to be used synchronously (not suggested)
