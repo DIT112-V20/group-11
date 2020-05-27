@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/paragraph"
+        android:layout_width="348dp"
+        android:layout_height="249dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="102dp"
+        android:fontFamily="@font/poppinslight"
+        android:text="This app is meant to help you connect to a TrailGage near you for the ultimate travelling experience. "
+        android:textColor="#abd8ff"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="268dp"
+        android:layout_height="228dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="499dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="97dp"
+        android:layout_marginBottom="356dp"
+        android:fontFamily="@font/poppinslight"
+        android:text="About the app"
+        android:textColor="#112090"
+        android:textSize="30sp" />
+
+
+</RelativeLayout>

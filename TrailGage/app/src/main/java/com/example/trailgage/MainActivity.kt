@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -61,7 +62,11 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
         }
 
-
+        val circlebutton = findViewById<Button>(R.id.circlebutton)
+        circlebutton.setOnClickListener{
+            val intent = Intent(this, InfoActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun openControll() {
@@ -114,6 +119,8 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
         return ipAdd
 
     }
+
+
 }
 
 
