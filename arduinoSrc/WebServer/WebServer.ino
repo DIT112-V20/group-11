@@ -8,11 +8,25 @@ const auto password = "Group111";
 
 WebServer server(80);
 
+//pin setup
+const int TRIGGER_PIN = 18; //D18
+const int ECHO_PIN = 5; //D5
+
+//parameter setup
+const unsigned int MAX_DISTANCE = 100;
+const int MIN_OBSTACLE_DISTANCE = 20; //20cm as the minimum stop distance
+
+//sensor setup
+SR04 front(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+
+
 BrushedMotor leftMotor(smartcarlib::pins::v2::leftMotorPins);
 BrushedMotor rightMotor(smartcarlib::pins::v2::rightMotorPins);
 DifferentialControl control(leftMotor, rightMotor);
 
 GY50 gyroscope(11);
+
+SimpleCar car(control);
 
 HeadingCar car(control, gyroscope);
 
@@ -70,8 +84,28 @@ void setup(void)
     Serial.println("HTTP server started");
 }
 
+
+int getDistance()
+{
+  int d =  front.SR04_cm();
+  if(d == 0)
+  {
+    return MAX_DISTANCE;
+  }else{
+    return d;
+  }
+
+//when the sensor detected the distance from the obstacle is less than 15cm
+//the car stops
+void obstacleAvoid() {
+    if (front.getDistance() <= MIN_OBSTACLE_DISTANCE && front.getDistance() > 0) {
+        car.setSpeed(0);
+    }
+}
+
 void loop(void)
 {
     server.handleClient();
     car.update();
+    obstacleAvoid();
 }
