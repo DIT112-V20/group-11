@@ -41,7 +41,26 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299" />
+        app:layout_constraintVertical_bias="0.327" />
+
+    <Button
+        android:id="@+id/circlebutton"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/infobutton"
+        android:fontFamily="@font/imfelldoublepicaitalic"
+        android:text="i"
+        android:textAllCaps="false"
+        android:textColor="#a6aaad"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
