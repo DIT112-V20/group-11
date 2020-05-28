@@ -9,8 +9,8 @@ const auto password = "Group111";
 WebServer server(80);
 
 //pin setup
-const int TRIGGER_PIN = 18; //D18
-const int ECHO_PIN = 5; //D5
+const int TRIGGER_PIN = 5; //D5 
+const int ECHO_PIN =  18; //D18
 
 //parameter setup
 const unsigned int MAX_DISTANCE = 100;
