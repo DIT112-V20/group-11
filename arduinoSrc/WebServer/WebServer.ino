@@ -26,8 +26,6 @@ DifferentialControl control(leftMotor, rightMotor);
 
 GY50 gyroscope(11);
 
-SimpleCar car(control);
-
 HeadingCar car(control, gyroscope);
 
 void setup(void)
@@ -83,17 +81,6 @@ void setup(void)
     server.begin();
     Serial.println("HTTP server started");
 }
-
-
-int getDistance()
-{
-  int d =  front.SR04_cm();
-  if(d == 0)
-  {
-    return MAX_DISTANCE;
-  }else{
-    return d;
-  }
 
 //when the sensor detected the distance from the obstacle is less than 15cm
 //the car stops
