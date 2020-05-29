@@ -18,8 +18,9 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
-    private var TAGS: String? = null
-    private var TAG: EditText? = null
+    private var trailName: String? = null
+    private var trailIpAddress: String? = null
+    private var trailNameEditText: EditText? = null
     private var imm: InputMethodManager? = null
     var mNsdManager: NsdManager? = null
     var mDeviceNameResolver: LocalNetworkDeviceNameResolver? = null
@@ -30,35 +31,20 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
         setContentView(R.layout.activity_main)
 
         // initialize views
-        TAG = findViewById(R.id.editTextTrailname)
+        trailNameEditText = findViewById(R.id.editTextTrailname)
         imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        TAGS = ""
 
 
-        // setting the listner to the search button
-
-
-
-        TAG?.setOnEditorActionListener(this)
-
-
-
-
-
-
-
-
-
-
+        trailNameEditText?.setOnEditorActionListener(this)
 
 
 
         connetButton.setOnClickListener {
+            //when you press the connect button it will move from main activity to control activity
             val bIntent = Intent(this, Control::class.java)
-            intent.putExtra("ipAdd",TAGS)
+            //passes the resolved ipAddress to the control activity
+            intent.putExtra("ipAddress",trailIpAddress)
             startActivity(bIntent)
-            Toast.makeText(this, "c", Toast.LENGTH_LONG).show()
-           // openControll()
 
         }
 
@@ -75,18 +61,16 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
 
     override fun onEditorAction(p0: TextView?, actionId: Int, event: KeyEvent?): Boolean {
-        return if (p0 == TAG) {
-            val trailName = TAG?.text?.trim().toString()
+        return if (p0 == trailNameEditText) {
+            var trailName = trailNameEditText?.text?.trim().toString()
             if (trailName.isBlank() || trailName.isEmpty()) {
-                TAG?.error = getString(R.string.name_cannot_be_empty)
+                trailNameEditText?.error = getString(R.string.name_cannot_be_empty)
 
             } else {
 
-                imm?.hideSoftInputFromWindow(TAG?.windowToken, 0)
-                println(TAG?.text?.trim().toString())
-                TAGS = TAG?.text?.trim().toString()
-                TAGS =getIpAdd(TAGS)
-                println(TAGS+"  this is last")
+                imm?.hideSoftInputFromWindow(trailNameEditText?.windowToken, 0)
+                trailName = trailNameEditText?.text?.trim().toString()
+                trailIpAddress =getIpAdd(trailName)
 
 
             }
@@ -99,24 +83,24 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
     private fun getIpAdd(tags: String?): String {
 
-        var ipAdd = ""
+        var tempIpAddress = ""
 
         // Don't use the same device name for multiple instances as they overwrite each other
         // Asynchronous device name resolution (suggested)
         mDeviceNameResolver = LocalNetworkDeviceNameResolver(this.applicationContext,
-            TAGS, "_http._tcp.", 80,
+            trailName, "_http._tcp.", 80,
             AddressResolutionListener { address ->
 
                 Log.i(
-                    TAGS,
+                    trailName,
                     "" + address.hostName
                 )
 
             })
-        ipAdd = mDeviceNameResolver!!.getAddress(10,TimeUnit.SECONDS).toString()
-        println(mDeviceNameResolver!!.getAddress(10,TimeUnit.SECONDS).toString())
 
-        return ipAdd
+        tempIpAddress = mDeviceNameResolver!!.getAddress(10,TimeUnit.SECONDS).toString()
+
+        return tempIpAddress
 
     }
 
