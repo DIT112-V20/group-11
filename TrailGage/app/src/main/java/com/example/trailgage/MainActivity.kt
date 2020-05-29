@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
             //when you press the connect button it will move from main activity to control activity
             val bIntent = Intent(this, Control::class.java)
             //passes the resolved ipAddress to the control activity
-            intent.putExtra("ipAddress",trailIpAddress)
+            bIntent.putExtra("ipAddress",trailIpAddress)
             startActivity(bIntent)
 
         }
@@ -55,9 +55,6 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
         }
     }
 
-    private fun openControll() {
-
-    }
 
 
     override fun onEditorAction(p0: TextView?, actionId: Int, event: KeyEvent?): Boolean {
