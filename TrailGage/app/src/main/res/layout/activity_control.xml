@@ -20,51 +20,98 @@
         custom:JV_fixedCenter="false"/>
 
 
+
     <TextView
         android:id="@+id/textView_angle_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="285dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginRight="237dp"
         android:text="0°" />
 
     <TextView
         android:id="@+id/textView_strength_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/textView_angle_right"
-        android:text="0%"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="277dp"
+        android:text="0%" />
 
+    <TextView
+        android:id="@+id/textView_strength_right3"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_angle_right"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="310dp"
+        android:text="Speed" />
 
     <TextView
         android:id="@+id/textView_coordinate_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="91dp"
+        android:layout_height="21dp"
         android:layout_below="@+id/textView_strength_right"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="154dp"
-        android:layout_marginRight="34dp"
-        android:text="x050:x050" />
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginRight="317dp"
+        android:text="x050:y050" />
 
     <TextView
         android:id="@+id/textView_Http_response"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView_strength_right"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="19dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginRight="191dp"
         android:text="server res" />
+
+    <TextView
+        android:id="@+id/textView_Http_response2"
+        android:layout_width="123dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/textView_strength_right"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="272dp"
+        android:text="server response" />
 
     <TextView
         android:id="@+id/textView_Ip_Add"
         android:layout_width="149dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView_strength_right"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginRight="140dp"
+        android:text="Ip address" />
+
+    <TextView
+        android:id="@+id/textView_Ip_Add2"
+        android:layout_width="91dp"
+        android:layout_height="21dp"
+        android:layout_below="@+id/textView_strength_right"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="299dp"
         android:text="Ip address" />
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
@@ -83,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:text="Angel" />
 
 </RelativeLayout>
