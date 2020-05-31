@@ -33,7 +33,7 @@ public class Control extends AppCompatActivity {
         mTextViewStrengthRight = findViewById(R.id.textView_strength_right);
         mTextViewCoordinateRight = findViewById(R.id.textView_coordinate_right);
         mTextViewHttpResponse = findViewById(R.id.textView_Http_response);
-        String ip = getIntent().getStringExtra("ipAdd");
+        String ip = getIntent().getStringExtra("ipAddress");
         //ip = "/192.168.1.105";
         textViewIpAdd = findViewById(R.id.textView_Ip_Add);
         textViewIpAdd.setText(ip);
@@ -47,8 +47,8 @@ public class Control extends AppCompatActivity {
                 strength = setStrength(strength, angle);
                 angle = setAngel(angle);
 
-                mTextViewAngleRight.setText(angle + "");
-                mTextViewStrengthRight.setText(strength + "");
+                mTextViewAngleRight.setText(angle + "°");
+                mTextViewStrengthRight.setText(strength + "%");
                 mTextViewCoordinateRight.setText(
                         String.format("x%03d:y%03d",
                                 joystickRight.getNormalizedX(),
@@ -61,12 +61,14 @@ public class Control extends AppCompatActivity {
                         new HttpRequest.Handler() {
                             @Override
                             public void response(HttpResponse response) {
-                                if (response.code == 200) {
+                                mTextViewHttpResponse.setText(response.body);
+                               /* if (response.code == 200) {
                                     mTextViewHttpResponse.setText(response.body);
+                                    System.out.println(response.body.toString());
                                 } else {
                                     System.out.println(response.body);
                                     //mTextViewHttpResponse.setText(response.body);
-                                }
+                                }*/
                             }
                         }).execute();
 
@@ -91,7 +93,7 @@ public class Control extends AppCompatActivity {
         String ipAdd = ip;
         //System.out.println("http://192.168.1.105/drive?speed="+String.valueOf(strength)+"&angle="+String.valueOf(angle));
         System.out.println("http:/" + ip + "/drive?speed=" + String.valueOf(strength) + "&angle=" + String.valueOf(angle));
-        return "http://192.168.1.105/drive?speed=" + String.valueOf(strength) + "&angle=" + String.valueOf(angle);
+        return "http:/" + ip + "/drive?speed=" + String.valueOf(strength) + "&angle=" + String.valueOf(angle);
     }
 
     // this method to correct the app angel to fit the sketch angel.

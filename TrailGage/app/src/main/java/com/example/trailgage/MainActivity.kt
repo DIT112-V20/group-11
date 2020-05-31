@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
         // initialize views
         trailNameEditText = findViewById(R.id.editTextTrailname)
         imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        trailIpAddress = ""
+        trailName = ""
 
 
         trailNameEditText?.setOnEditorActionListener(this)
@@ -67,7 +69,9 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
                 imm?.hideSoftInputFromWindow(trailNameEditText?.windowToken, 0)
                 trailName = trailNameEditText?.text?.trim().toString()
+                println(trailName)
                 trailIpAddress =getIpAdd(trailName)
+                println(trailIpAddress)
 
 
             }
@@ -78,7 +82,7 @@ class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
     }
 
-    private fun getIpAdd(tags: String?): String {
+    private fun getIpAdd(trailName: String?): String {
 
         var tempIpAddress = ""
 
