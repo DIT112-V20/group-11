@@ -7,4 +7,5 @@
     <string name="Next">next</string>
     <string name="enter_your_trail_gage_name" />
     <string name="name_cannot_be_empty">Username cannot be empty</string>
+    <string name="circlebutton">i</string>
 </resources>
