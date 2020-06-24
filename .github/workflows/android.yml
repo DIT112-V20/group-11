@@ -1,0 +1,8 @@
+name: Arduino CI
+
+jobs:
+  sketch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome
+        run: echo "Please build the Android app on CI"
