@@ -1,0 +1,8 @@
+name: Arduino CI
+
+jobs:
+  sketch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome
+        run: echo "Please check for spell errors in the README and other .md files"
