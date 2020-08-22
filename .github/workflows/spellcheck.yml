@@ -8,9 +8,9 @@ jobs:
      name: md spellchecker
      runs-on: ubuntu-latest
      steps:
-       -uses: actions/checkout@v1
+       -uses: actions/checkout@v2
         with:
-           fetch-depth: 1
+           fetch-depth: 2
       #Runs in a docker container
        -uses: ./github/actions/spell-check
            env:
