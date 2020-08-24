@@ -15,7 +15,7 @@
 
 <br><br>
 
-## <a id="1"></a>Our Projct
+## <a id="1"></a>Our Project
 
 TrailGage -- Smart luggage carrier
 ![TrailGage logo](https://github.com/DIT112-V20/group-11/blob/TrailGage/assets/TrailGageLogo.png)
