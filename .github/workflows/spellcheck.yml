@@ -11,6 +11,4 @@ jobs:
        -uses: actions/checkout@v2
       #Runs in a docker container
        -uses: ./github/actions/spell-check
-       -name: Welcome
-        run: echo "Please check for spelling errors in markdown files"      
-     
+      
