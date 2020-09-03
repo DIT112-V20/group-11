@@ -20,9 +20,9 @@ jobs:
        - name: Install platform
          run: |
           arduino-cli core update-index
-          arduino-cli core install ${{ ESP32.arduino-platform }}
+          arduino-cli core install ${{ matrix.arduino-platform }}
        - name: Compile Sketch
-         run: arduino-cli compile --fqbn ${{ ESP32.fqbn }} ./blink
+         run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./blink
   
 
  
