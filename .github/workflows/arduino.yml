@@ -1,8 +1,30 @@
-name: Arduino CI
-
+name:  ESP32 board on CI
+on: [push, pull_request]
 jobs:
-  sketch:
+  build-sketch:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Welcome
-        run: echo "Please build the Arduino sketch on CI"
+       - name: Checkout
+         uses: actions/checkout@v2
+       - name: Build on Arduino CLI
+         run: bash ci/build-arduino.sh
+       - name: Setup Arduino CLI
+         uses: arduino/setup-arduino-cli@v1.0.0
+       - name: upload
+         uses: actions/upload-artifact@master
+         with:
+          name: app-version-${{ env.VERSION }}
+          path: app-${{ env.VERSION }}.exename:ESP32 board on CI
+ 
+       - name: Install platform
+         run: |
+          arduino-cli core update-index
+          arduino-cli core install ${{ ESP32.arduino-platform }}
+       - name: Compile Sketch
+         run: arduino-cli compile --fqbn ${{ ESP32.fqbn }} ./blink
+  
+
+ 
+   
+ 
