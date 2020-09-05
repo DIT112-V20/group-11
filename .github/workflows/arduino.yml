@@ -10,8 +10,7 @@ jobs:
      
        - name: Setup Arduino CLI
          run: |
-                arduino-cli upload -p /dev/cu.usbmodem401101 --fqbn arduino:mbed:nano33ble -i path-to-our.bin
-                arduino-cli version
+                
                 arduino-cli core update-index
                 arduino-cli core search
                 arduino-cli core install arduino:avr
