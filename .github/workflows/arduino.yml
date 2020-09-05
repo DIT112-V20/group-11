@@ -7,10 +7,10 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@v2
-       - name: Build on Arduino CLI
-         run: bash ci/build-arduino.sh
+     
        - name: Setup Arduino CLI
          run: |
+                arduino/setup-arduino-cli@v1.0.0
                 arduino-cli version
                 arduino-cli core update-index
                 arduino-cli core search
