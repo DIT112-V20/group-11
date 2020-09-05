@@ -10,10 +10,10 @@ jobs:
        - name: Build on Arduino CLI
          run: bash ci/build-arduino.sh
        - name: Setup Arduino CLI
-         uses: apt-get install curl -y
-              tar xjf arduino-cli.tar.bz2
-              rm arduino-cli.tar.bz2
-              mv `ls -1` /usr/bin/arduino-cli
+         run: |
+                tar xjf arduino-cli.tar.bz2
+                rm arduino-cli.tar.bz2
+             
        - name: upload
          uses: actions/upload-artifact@master
          with:
