@@ -15,10 +15,7 @@ jobs:
           name: app-version-${{ env.VERSION }}
           path: app-${{ env.VERSION }}.exename:ESP32 board on CI
       
-       - name: install ESP32 core
-         run: |
-              arduino-cli core list
-              arduino-cli board listall
+     
        - name: install nativ packages
          run: | 
                arduino-cli lib install "Adafruit BME280 Library"
