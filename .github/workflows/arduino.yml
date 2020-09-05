@@ -18,8 +18,8 @@ jobs:
      
        - name: install nativ packages
          run: | 
-               arduino-cli lib install "Adafruit BME280 Library"
-               arduino-cli lib install "Adafruit Unified Sensor"
+             install "Adafruit BME280 Library"
+             install "Adafruit Unified Sensor"
        - name:  Install 'third-party' #packages: find proper location and 'git clone'
          run: | 
                 arduino-cli config dump
