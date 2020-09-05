@@ -11,17 +11,23 @@ jobs:
          run: bash ci/build-arduino.sh
        - name: Setup Arduino CLI
          run: |
-                tar xjf arduino-cli.tar.bz2
-                rm arduino-cli.tar.bz2
+                arduino-cli version
+                arduino-cli core update-index
+                arduino-cli core search
+                arduino-cli core install arduino:avr
              
        - name: upload
          uses: actions/upload-artifact@master
          with:
           name: app-version-${{ env.VERSION }}
           path: app-${{ env.VERSION }}.exename:ESP32 board on CI
+      
        - name: install ESP32 core
          run: |
-          arduino-cli core search esp32 --config-file .arduino-cli.yam
+             
+              arduino-cli core search esp32 --config-file .arduino-cli.yam
+              arduino-cli core list
+              arduino-cli board listall
        - name: install nativ packages
          run: | 
                arduino-cli lib install "Adafruit BME280 Library"
@@ -46,9 +52,15 @@ jobs:
            python get-pip.py
            pip3 install pyserial
            arduino-cli core install esp32:esp32 --additional-urls "https://dl.espressif.com/dl/package_esp32_index.json"
+           adafruit.github.io/arduino-board-index/package_adafruit_index.json
+           aw.githubusercontent.com/Seeed-Studio/Seeed_Platform/master/package_seeeduino_boards_index.json
            arduino-cli lib install "ESP32 AnalogWrite"
            arduino-cli lib install "ServoESP32"
-       
+           
+       - name: update index
+         uses: arduino-cli core update-index
+       - name: search for boards like the ESP32
+         uses: arduino-cli core search esp32
        - name: Compile Sketch
          run: |
           arduino-cli compile --fqbn esp32:esp32:esp32 -o ignored.bin robot.ino
