@@ -58,7 +58,8 @@ jobs:
            arduino-cli lib install "ServoESP32"
            
        - name: update index
-         uses: arduino-cli core update-index
+         uses: package_index.json downloaded
+               package_seeeduino_boards_index.json downloaded
        - name: search for boards like the ESP32
          uses: arduino-cli core search esp32
        - name: Compile Sketch
