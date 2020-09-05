@@ -11,18 +11,47 @@ jobs:
          run: bash ci/build-arduino.sh
        - name: Setup Arduino CLI
          uses: arduino/setup-arduino-cli@v1.0.0
+               arduino-cli.tar.bz2 
        - name: upload
          uses: actions/upload-artifact@master
          with:
           name: app-version-${{ env.VERSION }}
           path: app-${{ env.VERSION }}.exename:ESP32 board on CI
- 
-       - name: Install platform
+       - name: install ESP32 core
          run: |
-          arduino-cli core update-index
-          arduino-cli core install ${{ matrix.arduino-platform }}
+          arduino-cli core search esp32 --config-file .arduino-cli.yam
+       - name: install nativ packages
+         run: | 
+               arduino-cli lib install "Adafruit BME280 Library"
+               arduino-cli lib install "Adafruit Unified Sensor"
+       - name:  Install 'third-party' #packages: find proper location and 'git clone'
+         run: | 
+                arduino-cli config dump
+                apt-get install git -y
+                cd `arduino-cli config dump | grep sketchbook | sed 's/.*\ //'`/libraries
+                git clone https://github.com/me-no-dev/AsyncTCP.git
+                git clone https://github.com/me-no-dev/ESPAsyncWebServer.git
+                git clone https://github.com/ThingPulse/esp8266-oled-ssd1306.git
+                git clone https://github.com/RoboticsBrno/ESP32-Arduino-Servo-Library.git
+
+       - name: Get Python3
+         uses: actions/setup-python@v1
+         with:
+          python-version: '3.x'
+       - name: Fetch sketch dependencies
+         run: |
+           apt-get install python -y
+           python get-pip.py
+           pip3 install pyserial
+           arduino-cli core install esp32:esp32 --additional-urls "https://dl.espressif.com/dl/package_esp32_index.json"
+           arduino-cli lib install "ESP32 AnalogWrite"
+           arduino-cli lib install "ServoESP32"
+       
        - name: Compile Sketch
-         run: arduino-cli compile --fqbn ${{ matrix.fqbn }} ./blink
+         run: |
+          arduino-cli compile --fqbn esp32:esp32:esp32 -o ignored.bin robot.ino
+         
+      
   
 
  
