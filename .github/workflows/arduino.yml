@@ -7,9 +7,7 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@v2
-     
-       - name: Setup Arduino CLI
-         uses: brew install arduino-cli
+ 
              
        - name: upload
          uses: actions/upload-artifact@master
