@@ -22,14 +22,6 @@ jobs:
           python-version: '3.x'
      
       
-       - name: Compile Sketch
-         run: |
-          arduino-cli compile -b esp32:esp32:esp32doit-devkit-v1 arduino/SmartcarWebserver/SmartcarWebserver.ino
-          arduino-cli compile -b esp32:esp32:esp32doit-devkit-v1 arduino/SmartcarWebserverWithClass/SmartcarWebserverWithClass.ino
-          arduino-cli compile -b esp32:esp32:esp32doit-devkit-v1 arduino/SmartcarWebserverTestable/SmartcarWebserverTestable.ino         
-      
-  
-
- 
+       
    
  
