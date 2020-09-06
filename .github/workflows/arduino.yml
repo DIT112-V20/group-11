@@ -21,13 +21,7 @@ jobs:
          with:
           python-version: '3.x'
      
-       - name: test platforms
-         run: |
-          python3 build_platform.py uno leonardo mega2560 zero esp8266 esp32
-       
-           
-       
-   
+      
        - name: Compile Sketch
          run: |
           arduino-cli compile --fqbn esp32:esp32:esp32 -o ignored.bin robot.ino
