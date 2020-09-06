@@ -20,16 +20,12 @@ jobs:
          uses: actions/setup-python@v1
          with:
           python-version: '3.x'
-       - name: Fetch sketch dependencies
+       - name: pre-install
+         run: bash ./actions_install.sh
+       - name: test platforms
          run: |
-           apt-get install python -y
-           python get-pip.py
-           pip3 install pyserial
-           arduino-cli core install esp32:esp32 --additional-urls "https://dl.espressif.com/dl/package_esp32_index.json"
-           adafruit.github.io/arduino-board-index/package_adafruit_index.json
-           aw.githubusercontent.com/Seeed-Studio/Seeed_Platform/master/package_seeeduino_boards_index.json
-           arduino-cli lib install "ESP32 AnalogWrite"
-           arduino-cli lib install "ServoESP32"
+          python3 build_platform.py uno leonardo mega2560 zero esp8266 esp32
+       
            
        
    
