@@ -24,8 +24,9 @@ jobs:
       
        - name: Compile Sketch
          run: |
-          arduino-cli compile --fqbn esp32:esp32:esp32 -o ignored.bin robot.ino
-         
+          arduino-cli compile -b esp32:esp32:esp32doit-devkit-v1 arduino/SmartcarWebserver/SmartcarWebserver.ino
+          arduino-cli compile -b esp32:esp32:esp32doit-devkit-v1 arduino/SmartcarWebserverWithClass/SmartcarWebserverWithClass.ino
+          arduino-cli compile -b esp32:esp32:esp32doit-devkit-v1 arduino/SmartcarWebserverTestable/SmartcarWebserverTestable.ino         
       
   
 
