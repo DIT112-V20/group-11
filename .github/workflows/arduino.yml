@@ -16,20 +16,6 @@ jobs:
           path: app-${{ env.VERSION }}.exename:ESP32 board on CI
       
      
-       - name: install nativ packages
-         run: | 
-             install "Adafruit BME280 Library"
-             install "Adafruit Unified Sensor"
-       - name:  Install 'third-party' #packages: find proper location and 'git clone'
-         run: | 
-                arduino-cli config dump
-                apt-get install git -y
-                cd `arduino-cli config dump | grep sketchbook | sed 's/.*\ //'`/libraries
-                git clone https://github.com/me-no-dev/AsyncTCP.git
-                git clone https://github.com/me-no-dev/ESPAsyncWebServer.git
-                git clone https://github.com/ThingPulse/esp8266-oled-ssd1306.git
-                git clone https://github.com/RoboticsBrno/ESP32-Arduino-Servo-Library.git
-
        - name: Get Python3
          uses: actions/setup-python@v1
          with:
