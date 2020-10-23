@@ -1,8 +1,12 @@
 name: Arduino CI
 
+on: [push]
+
 jobs:
-  sketch:
+  build-sketch:
     runs-on: ubuntu-latest
     steps:
-      - name: Welcome
-        run: echo "Please build the Android app on CI"
+      - name: Clone Repo
+        uses: actions/checkout@v2
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1.0.0
