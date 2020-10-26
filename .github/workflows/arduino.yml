@@ -1,9 +1,6 @@
 name: Arduino CI
 
 on: [push]
-
-on:[push]
-
 jobs:
   build-sketch:
     runs-on: ubuntu-latest
