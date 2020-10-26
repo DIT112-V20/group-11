@@ -21,4 +21,4 @@ jobs:
            arduino-cli lib install "Smartcar shield"
       - name: Build sketch
         run: |
-          arduino-cli compile -b esp32:esp32:esp32doit-devkit-v1 WebServer/WebServer.ino
+          arduino-cli compile -b esp32:esp32:esp32doit-devkit-v1 arduinoSrc/WebServer/WebServer.ino
