@@ -16,9 +16,9 @@ jobs:
       - name: Fetch sketch dependencies
         run: |
            pip3 install pyserial
-           arduino-cli lib install AudioZero@6.0.0
            arduino-cli core update-index --additional-urls "https://dl.espressif.com/dl/package_esp32_index.json"
            arduino-cli core install esp32:esp32 --additional-urls "https://dl.espressif.com/dl/package_esp32_index.json"
+           arduino-cli lib install LIBRARY[@6.0.0](S) [flags]
            arduino-cli lib install "Smartcar shield"
       - name: Build sketch
         run: |
