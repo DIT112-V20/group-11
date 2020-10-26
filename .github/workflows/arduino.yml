@@ -5,6 +5,14 @@ jobs:
   build-sketch:
     runs-on: ubuntu-latest
     steps:
+      - name: Clone Repo
+        uses: actions/checkout@v2
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1.0.0
+      - name: Get Python3
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
       - name: Fetch sketch dependencies
         run: |
            pip3 install pyserial
