@@ -10,7 +10,11 @@ jobs:
        uses: actions/setup-java@v1
        with:
          java-version: 1.8
-
+     - name: run Tests
+       run: |
+          cd TrailGage
+          ./gradlew test --info
+          
      - name: Build Project
        run: |
           cd TrailGage
