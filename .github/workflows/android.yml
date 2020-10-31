@@ -14,7 +14,6 @@ jobs:
        uses: actions/checkout@v2  
      - name: Build App
        run: |
-          cd TrailGage
-          chmod +x gradlew
+          cd TrailGage --chmod +x gradlew
           ./gradlew build --stacktrace
  
