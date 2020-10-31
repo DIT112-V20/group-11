@@ -15,7 +15,7 @@ jobs:
           cd TrailGage
           ./gradlew test --info
           
-     - name: Build Project
+     - name: Build App
        run: |
           cd TrailGage
           ./gradlew build --stacktrace
