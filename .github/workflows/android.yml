@@ -15,5 +15,7 @@ jobs:
      - name: Build App
        run: |
           cd TrailGage 
-          chmod +x gradlew && ./gradlew build --stacktrace
+          touch local.properties
+          chmod +x gradlew 
+          export TERM=xterm &&./gradlew build --stacktrace
  
