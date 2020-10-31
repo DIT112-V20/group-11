@@ -1,0 +1,21 @@
+name:  Android build CI
+
+on: pull_request 
+
+jobs:
+ build-app:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Set up JDK
+       uses: actions/setup-java@v1
+       with:
+         java-version: 1.8 
+     - name: Clone Repo
+       uses: actions/checkout@v2  
+     - name: Build App
+       run: |
+          cd TrailGage 
+          touch local.properties
+          chmod +x gradlew 
+          export TERM=xterm &&./gradlew build --stacktrace
+ 
